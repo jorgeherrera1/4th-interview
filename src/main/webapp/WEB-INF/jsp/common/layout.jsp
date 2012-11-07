@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>4th Interview</title>
+        <title>${param.title}</title>
         
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Convenience web application for technical interviews">
         <meta name="author" content="Jorge Herrera">
         
-        <link href="css/bootstrap.css" rel="stylesheet">
-        <link href="css/bootstrap-responsive.css" rel="stylesheet">
+        <link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet">
+        <link href="${pageContext.request.contextPath}/css/bootstrap-responsive.css" rel="stylesheet">
         
         <style type="text/css">
             .sidebar-nav {
@@ -53,6 +53,7 @@
                     </div>
                 </div>
                 <div class="span9">
+                    ${param.content}
                 </div>
             </div>
             
@@ -63,6 +64,6 @@
         </div>
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.js"></script>
-        <script src="js/bootstrap.js"></script>
+        <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
     </body>
 </html>
