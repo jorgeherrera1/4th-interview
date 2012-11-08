@@ -5,39 +5,34 @@ import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.persistence.JoinColumn
-import javax.persistence.OneToMany
+import javax.persistence.ManyToOne
 import javax.persistence.Table
-import javax.validation.constraints.Max
-import javax.validation.constraints.Min
-import javax.validation.constraints.NotNull
-import javax.validation.constraints.Size
+
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.hibernate.annotations.Type
+import org.joda.time.DateTime
 
 import com.google.common.base.Objects
 
 @Entity
-@Table(name = 'candidates')
-class Candidate implements Serializable {
+@Table(name = 'interviews')
+class Interview implements Serializable {
     
     private static final long serialVersionUID = 1L;
     
     @Id
-    @Column(name = 'candidate_id')
+    @Column(name = 'interview_id')
     @GeneratedValue
     Integer id
     
-    @Column(name = 'name')
-    @NotNull
-    @Size(min = 1, max = 30)
-    String name
-    
-    @Column(name = 'age')
-    @Min(18l)
-    @Max(70l)
-    Integer age
-    
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = 'candidate_id')
-    Set<Interview> interviews
+    @JsonIgnore
+    Candidate candidate
+    
+    @Column(name = 'interview_date')
+    @Type(type='org.joda.time.contrib.hibernate.PersistentDateTime')
+    DateTime date
     
     @Override
     public boolean equals(Object obj) {
@@ -45,29 +40,28 @@ class Candidate implements Serializable {
             return true
         }
         
-        if (!(obj instanceof Candidate)) {
+        if (!(obj instanceof Interview)) {
             return false
         }
         
-        Candidate that = obj as Candidate
+        Interview that = obj as Interview
         
         return Objects.equal(this.id, that.id) &&
-               Objects.equal(this.name, that.name) &&
-               Objects.equal(this.age, that.age)
+               Objects.equal(this.candidate, that.candidate) &&
+               Objects.equal(this.date, that.date)
     }
     
     @Override
     public int hashCode() {
-        return Objects.hashCode(this.id, this.name, this.age)
+        return Objects.hashCode(this.id, this.candidate, this.date)
     }
     
     @Override
     public String toString() {
         return Objects.toStringHelper(this)
                       .add('id', this.id)
-                      .add('name', this.name)
-                      .add('age', this.age)
-                      .add('interviews', this.interviews)
+                      .add('candidate', this.candidate?.name)
+                      .add('date', this.date)
                       .toString()
     }
     
