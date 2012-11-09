@@ -8,7 +8,7 @@ import javax.persistence.JoinColumn
 import javax.persistence.ManyToOne
 import javax.persistence.Table
 
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonIgnore
 import org.hibernate.annotations.Type
 import org.joda.time.DateTime
 
@@ -18,7 +18,7 @@ import com.google.common.base.Objects
 @Table(name = 'interviews')
 class Interview implements Serializable {
     
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L
     
     @Id
     @Column(name = 'interview_id')
@@ -33,6 +33,8 @@ class Interview implements Serializable {
     @Column(name = 'interview_date')
     @Type(type='org.joda.time.contrib.hibernate.PersistentDateTime')
     DateTime date
+    
+    List<AskedQuestion> askedQuestions
     
     @Override
     public boolean equals(Object obj) {

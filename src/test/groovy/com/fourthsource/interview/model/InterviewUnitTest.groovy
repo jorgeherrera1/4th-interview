@@ -63,6 +63,16 @@ class InterviewUnitTest {
     }
     
     @Test(groups = 'unit-test')
+    void "equals should return false if interviews are different"() {
+        DateTime interviewDate = DateTime.now()
+        
+        def interview = new Interview(id: 1, candidate: new Candidate(name: 'John Doe'), date: interviewDate)
+        def otherInterview = new Interview(id: 1, candidate: new Candidate(name: 'Jane Doe'), date: interviewDate)
+        
+        assert !interview.equals(otherInterview)
+    }
+    
+    @Test(groups = 'unit-test')
     void "hash code should be different for different candidates"() {
         def interview = new Interview(id: 1, candidate: new Candidate(name: 'John Doe'), date: DateTime.now())
         def otherInterview = new Interview(id: 2, candidate: new Candidate(name: 'Jane Doe'), date: DateTime.now())
