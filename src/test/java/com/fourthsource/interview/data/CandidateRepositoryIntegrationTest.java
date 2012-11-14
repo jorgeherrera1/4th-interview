@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 import com.fourthsource.interview.model.Candidate;
 
-@ContextConfiguration("classpath:persistence-context.xml")
+@ContextConfiguration({"classpath:application-context.xml", "classpath:persistence-context.xml"})
 public class CandidateRepositoryIntegrationTest extends AbstractTransactionalTestNGSpringContextTests {
 
     @Autowired

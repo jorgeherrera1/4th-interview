@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.persistence.JoinColumn
 import javax.persistence.ManyToOne
+import javax.persistence.OneToMany
 import javax.persistence.Table
 
 import org.codehaus.jackson.annotate.JsonIgnore
@@ -34,6 +35,7 @@ class Interview implements Serializable {
     @Type(type='org.joda.time.contrib.hibernate.PersistentDateTime')
     DateTime date
     
+    @OneToMany(mappedBy = 'id.interview')
     List<AskedQuestion> askedQuestions
     
     @Override
