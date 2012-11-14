@@ -65,5 +65,6 @@
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.js"></script>
         <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
+        ${param.javascript}
     </body>
 </html>
