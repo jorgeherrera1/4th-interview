@@ -13,12 +13,13 @@ import org.springframework.util.StopWatch;
 public class LoggerInterceptor {
 
     @Around("execution(* com.fourthsource.interview..*.*(..))")
-    public Object beforeMethod(ProceedingJoinPoint joinPoint) throws Throwable {
+    public Object logMethodCall(ProceedingJoinPoint joinPoint) throws Throwable {
         Class<?> targetClass = joinPoint.getTarget().getClass();
         Logger logger = LoggerFactory.getLogger(targetClass);
         
         String methodName = joinPoint.getSignature().getName();
-        logger.debug("Calling method {}", methodName);
+        Object[] args = joinPoint.getArgs();
+        logger.debug("Calling method {} with arguments {}", methodName, args);
         
         StopWatch watch = new StopWatch();
         watch.start();
