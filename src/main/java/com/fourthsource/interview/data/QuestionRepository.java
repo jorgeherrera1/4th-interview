@@ -5,7 +5,7 @@ import org.springframework.data.rest.repository.annotation.RestResource;
 
 import com.fourthsource.interview.model.Question;
 
-@RestResource(path = "questions")
+@RestResource(path = "question")
 public interface QuestionRepository extends JpaRepository<Question, Integer> {
     
     

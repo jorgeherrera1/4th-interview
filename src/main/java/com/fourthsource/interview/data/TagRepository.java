@@ -5,7 +5,7 @@ import org.springframework.data.rest.repository.annotation.RestResource;
 
 import com.fourthsource.interview.model.Tag;
 
-@RestResource(path = "tags")
+@RestResource(path = "tag")
 public interface TagRepository extends JpaRepository<Tag, Integer> {
     
     

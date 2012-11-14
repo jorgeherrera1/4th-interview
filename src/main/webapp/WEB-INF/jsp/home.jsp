@@ -15,7 +15,22 @@
         <script>
         $(document).ready(function() {
         	$('#quickInterviewButton').click(function() {
-        		alert('hola');
+        		var candidateName = $('#candidateName').val();
+        		var candidateAge = $('#candidateAge').val();
+        		
+        		$.ajax({
+        			  type: 'POST',
+        			  url: '${pageContext.request.contextPath}/rest/candidates',
+        			  data: JSON.stringify({
+        				  'name': candidateName,
+        				  'age': candidateAge
+        			  }),
+        			  success: function(data, textStatus, jqXHR) {
+        				  alert(textStatus);
+        			  },
+        			  dataType: 'json',
+        			  contentType: 'application/json' 
+        		});
         	});
         });
         </script>
