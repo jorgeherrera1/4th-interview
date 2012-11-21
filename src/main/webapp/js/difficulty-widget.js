@@ -1,5 +1,6 @@
 (function($) {
     $.widget('4th.difficulty', {
+        
         // These options will be used as defaults
         options: {
             serviceUrl: null
@@ -9,33 +10,56 @@
         _create: function() {
             var self = this;
             
+            // get the difficulties from the server
             $.ajax({
                 url: this.options.serviceUrl,
                 dataType: 'json',
                 data: null,
                 success: function(data, textStatus, jqXHR) {
-                    self.difficulties = data;
+                    self._cacheDifficulties(data);
+                    self._createDropdown();
                 }
             });
-            
-            alert(self.difficulties);
         },
         
-        // (Re)Initialize the widget (any time)
-        _init: function() {
-            var button = $('<a>').attr('href', '#')
-                                 .data('toggle', 'difficulties')
-                                 .addClass('btn dropdown-toggle')
-                                 .val(this.difficulties[0])
-                                 .append('<span class="caret"></span>');
+        _cacheDifficulties: function(difficulties) {
+            this.difficulties = difficulties.content;
+        },
+        
+        _createDropdown: function() {
+            var defaultDifficulty = this.difficulties[0].name;
+            var difficultyButton = $('<a>').addClass('btn dropdown-toggle')
+                                           .css('width', '160px')
+                                           .attr({
+                                               'href': '#',
+                                               'data-toggle': 'dropdown'
+                                           })
+                                           .text(defaultDifficulty);
             
-            this.element.addClass('btn-group');
-            this.element.insert(button);
+            var difficultyOptions = $('<ul>').addClass('dropdown-menu');
+            $.each(this.difficulties, function(index, value) {
+                var difficultyOption = $('<li><a href="#">' + value.name + '</a></li>');
+                
+                difficultyOptions.append(difficultyOption);
+            });
+            
+            $('li a', difficultyOptions).click(function() {
+                difficultyButton.text($(this).text());
+            });
+            
+            this.element.addClass('btn-group')
+                        .append(difficultyButton)
+                        .append(difficultyOptions);
+        },
+        
+        // _setOption is called for each individual option that is changing
+        _setOption: function(key, value) {
+            this._super(key, value);
         },
         
         // Use the destroy method to clean up any modifications your widget has made to the DOM
-        destroy: function() {
-            $.Widget.prototype.destroy.call(this);
+        _destroy: function() {
+            
         }
     });
 })(jQuery);

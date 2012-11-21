@@ -46,8 +46,8 @@
             </footer>
         </div>
         
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/jquery-ui.js"></script>
+        <script src="${pageContext.request.contextPath}/js/jquery-1.8.2.js"></script>
+        <script src="${pageContext.request.contextPath}/js/jquery-ui-1.9.1.js"></script>
         <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
         ${param.javascript}
     </body>

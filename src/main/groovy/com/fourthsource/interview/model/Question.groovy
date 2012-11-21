@@ -2,13 +2,12 @@ package com.fourthsource.interview.model
 
 import javax.persistence.Column
 import javax.persistence.Entity
-import javax.persistence.EnumType
-import javax.persistence.Enumerated
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.persistence.JoinColumn
 import javax.persistence.JoinTable
 import javax.persistence.ManyToMany
+import javax.persistence.OneToOne
 import javax.persistence.Table
 import javax.validation.constraints.NotNull
 import javax.validation.constraints.Size
@@ -35,8 +34,8 @@ class Question implements Serializable {
     @Size(max = 512)
     String expectedAnswer
     
-    @Column(name = 'difficulty', length = 12)
-    @Enumerated(EnumType.STRING)
+    @OneToOne
+    @JoinColumn(name = 'difficulty')
     Difficulty difficulty
     
     @ManyToMany
