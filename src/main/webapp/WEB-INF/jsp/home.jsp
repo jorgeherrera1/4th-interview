@@ -4,29 +4,39 @@
         <div class="container-fluid">
             <div class="row-fluid">
                 <div class="span8 offset2">
-                    <div class="hero-unit">
-                        <h2>Quick Interview</h2>
-                        <p>
-                            <label for="candidateName">Name:</label>
-                            <input id="candidateName" type="text" placeholder="Name" style="width: 240px;" />
-                            <label for="candidateAge">Age:</label>
-                            <input id="candidateAge" type="text" placeholder="Age" style="width: 40px;" />
-                            <label id="interviewDifficulty">Difficulty:</label>
-                            <div id="difficulties"></div>
-                        </p>
-                        <p>
-                            <button class="btn btn-large btn-primary" type="button">Start Now &raquo;</button>
-                        </p>
+                    <div class="container-fluid hero-unit">
+                        <form>
+                            <fieldset>
+                                <legend>Quick Interview</legend>
+                                <div class="row-fluid">
+                                    <div class="span6">   
+                                        <label>Name:</label>
+                                        <input id="candidateName" class="input-large" type="text" placeholder="Name" />
+                                        <div class="input-append">
+                                            <label>Age:</label>
+                                            <input id="candidateAge" class="input-mini" type="text" placeholder="Age" />
+                                            <span class="add-on">years</span>
+                                        </div>
+                                        <div id="difficulty"></div>
+                                    </div>
+                                    <div class="span6">
+                                        <label>Tags:</label>
+                                        
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </c:param>
     <c:param name="javascript">
+        <script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
         <script src="${pageContext.request.contextPath}/js/difficulty-widget.js"></script>
         <script>
         $(document).ready(function() {
-        	$('#difficulties').difficulty({serviceUrl: '${pageContext.request.contextPath}/rest/difficulty'});
+        	$('#difficulty').difficulty({serviceUrl: '${pageContext.request.contextPath}/rest/difficulty'});
         });
         </script>
     </c:param>

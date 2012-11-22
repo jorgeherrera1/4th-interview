@@ -16,40 +16,52 @@
                 dataType: 'json',
                 data: null,
                 success: function(data, textStatus, jqXHR) {
-                    self._cacheDifficulties(data);
-                    self._createDropdown();
+                    self._cacheDifficulties(data.content);
+                    self._populateDifficulties();
                 }
             });
         },
         
         _cacheDifficulties: function(difficulties) {
-            this.difficulties = difficulties.content;
+            this.difficulties = difficulties;
         },
         
-        _createDropdown: function() {
-            var defaultDifficulty = this.difficulties[0].name;
-            var difficultyButton = $('<a>').addClass('btn dropdown-toggle')
-                                           .css('width', '160px')
-                                           .attr({
-                                               'href': '#',
-                                               'data-toggle': 'dropdown'
-                                           })
-                                           .text(defaultDifficulty);
+        _populateDifficulties: function() {
+            var markup = '<div class="input-append">\
+                              <label>Difficulty</label>\
+                              <input class="input-medium" type="text" placeholder="Difficulty" />\
+                              <div class="btn-group">\
+                                  <button class="btn dropdown-toggle" data-toggle="dropdown">\
+                                      <span class="caret"></span>\
+                                  </button>\
+                                  <ul class="dropdown-menu">\
+                                  {{each difficulties}}\
+                                      <li>\
+                                          <a href="#">${name}</a>\
+                                      </li>\
+                                  {{/each}}\
+                                  </ul>\
+                              </div>\
+                          </div>';
             
-            var difficultyOptions = $('<ul>').addClass('dropdown-menu');
-            $.each(this.difficulties, function(index, value) {
-                var difficultyOption = $('<li><a href="#">' + value.name + '</a></li>');
+            $.template('difficultyTemplate', markup);
+            $.tmpl('difficultyTemplate', {
+                difficulties: this.difficulties
+            }).appendTo(this.element);
+            
+            var contextElement = this.element.get();
+            
+            $('li a', contextElement).click(function() {
+                var selectedDifficulty = $(this).text();
                 
-                difficultyOptions.append(difficultyOption);
+                $('input[type="text"]', contextElement).val(selectedDifficulty);
             });
+        },
+        
+        getSelectedDifficulty: function() {
+            var contextElement = this.element.get();
             
-            $('li a', difficultyOptions).click(function() {
-                difficultyButton.text($(this).text());
-            });
-            
-            this.element.addClass('btn-group')
-                        .append(difficultyButton)
-                        .append(difficultyOptions);
+            return $('input[type="text"]', contextElement).val();
         },
         
         // _setOption is called for each individual option that is changing
@@ -59,7 +71,7 @@
         
         // Use the destroy method to clean up any modifications your widget has made to the DOM
         _destroy: function() {
-            
+            this.element.empty();
         }
     });
 })(jQuery);
