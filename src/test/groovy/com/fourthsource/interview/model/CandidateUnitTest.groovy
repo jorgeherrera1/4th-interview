@@ -15,20 +15,20 @@ class CandidateUnitTest {
         assert candidate.id == 1234
     }
     
-    @Test(groups = 'unit-test')
+	@Test(groups = 'unit-test')
+	void "should return candidate name"() {
+		def candidate = new Candidate()
+		candidate.name = 'John Doe'
+		
+		assert candidate.name == 'John Doe'
+	}
+	
+	@Test(groups = 'unit-test')
     void "should return candidate age"() {
         def candidate = new Candidate()
         candidate.age = 21
         
         assert candidate.age == 21
-    }
-    
-    @Test(groups = 'unit-test')
-    void "should return candidate name"() {
-        def candidate = new Candidate()
-        candidate.name = 'John Doe'
-        
-        assert candidate.name == 'John Doe'
     }
     
     @Test(groups = 'unit-test')

@@ -67,7 +67,6 @@ class Candidate implements Serializable {
                       .add('id', this.id)
                       .add('name', this.name)
                       .add('age', this.age)
-                      .add('interviews', this.interviews)
                       .toString()
     }
     
