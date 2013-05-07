@@ -23,18 +23,7 @@
     
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
-        <url-pattern>/service/*</url-pattern>
-    </servlet-mapping>
-    
-    <servlet>
-        <servlet-name>content</servlet-name>
-        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-    
-    <servlet-mapping>
-        <servlet-name>content</servlet-name>
-        <url-pattern>*.html</url-pattern>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -67,18 +56,7 @@
     </filter-mapping>
 
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>index.html</welcome-file>
     </welcome-file-list>
-    
-    <jsp-config>
-        <jsp-property-group>
-            <url-pattern>*.jsp</url-pattern>
-            <el-ignored>false</el-ignored>
-            <page-encoding>UTF-8</page-encoding>
-            <scripting-invalid>false</scripting-invalid>
-            <include-prelude>/WEB-INF/jsp/common/include.jsp</include-prelude>
-            <trim-directive-whitespaces>true</trim-directive-whitespaces>
-        </jsp-property-group>
-    </jsp-config>
 
 </web-app>
