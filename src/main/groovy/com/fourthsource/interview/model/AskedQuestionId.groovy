@@ -10,11 +10,11 @@ import com.google.common.base.Objects
 class AskedQuestionId implements Serializable {
 
     @OneToOne
-    @JoinColumn(name = 'interview_id')
+    @JoinColumn(name = 'INTERVIEW_ID')
     Interview interview
     
     @OneToOne
-    @JoinColumn(name = 'question_id')
+    @JoinColumn(name = 'QUESTION_ID')
     Question question
     
 	@Override

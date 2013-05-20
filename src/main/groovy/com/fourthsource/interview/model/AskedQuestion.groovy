@@ -11,18 +11,18 @@ import javax.validation.constraints.Size
 
 
 @Entity
-@Table(name = 'interview_asked_questions')
+@Table(name = 'INTERVIEW_ASKED_QUESTIONS')
 class AskedQuestion implements Serializable {
     
     @EmbeddedId
     AskedQuestionId id
     
-    @Column(name = 'grade', length = 14)
+    @Column(name = 'GRADE', length = 14)
     @Enumerated(EnumType.STRING)
     @NotNull
     Grade grade
     
-    @Column(name = 'comments')
+    @Column(name = 'COMMENTS')
     @Size(max = 512)
     String comments
     

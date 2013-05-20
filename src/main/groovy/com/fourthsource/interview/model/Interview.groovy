@@ -16,22 +16,22 @@ import org.joda.time.DateTime
 import com.google.common.base.Objects
 
 @Entity
-@Table(name = 'interviews')
+@Table(name = 'INTERVIEWS')
 class Interview implements Serializable {
     
     private static final long serialVersionUID = 1L
     
     @Id
-    @Column(name = 'interview_id')
+    @Column(name = 'INTERVIEW_ID')
     @GeneratedValue
     Integer id
     
     @ManyToOne
-    @JoinColumn(name = 'candidate_id')
+    @JoinColumn(name = 'CANDIDATE_ID')
     @JsonIgnore
     Candidate candidate
     
-    @Column(name = 'interview_date')
+    @Column(name = 'INTERVIEW_DATE')
     @Type(type='org.joda.time.contrib.hibernate.PersistentDateTime')
     DateTime date
     

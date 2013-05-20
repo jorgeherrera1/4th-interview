@@ -1,8 +1,3 @@
--- Difficulties
-insert into difficulties (val, name, description) values (10, 'Basic', 'Includes questions that even Jr candidates should know');
-insert into difficulties (val, name, description) values (20, 'Intermediate', 'Includes questions that require some experience working with the technology');
-insert into difficulties (val, name, description) values (30, 'Advanced', 'Includes questions that require expertise from the candidate with the technology');
-
 -- Tags
 insert into tags (name, description) values ('Java', 'Java programming language');
 insert into tags (name, description) values ('PHP', 'PHP programming language');

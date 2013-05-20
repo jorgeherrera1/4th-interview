@@ -9,15 +9,15 @@ import javax.validation.constraints.Size;
 import com.google.common.base.Objects
 
 @Entity
-@Table(name = 'tags')
+@Table(name = 'TAGS')
 class Tag implements Serializable {
     
     @Id
-    @Column(name = 'name')
+    @Column(name = 'NAME')
     @Size(max = 64)
     String name
     
-    @Column(name = 'description')
+    @Column(name = 'DESCRIPTION')
     @Size(max = 512)
     String description
     

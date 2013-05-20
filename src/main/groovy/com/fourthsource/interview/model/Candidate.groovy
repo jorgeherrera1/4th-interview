@@ -15,23 +15,23 @@ import javax.validation.constraints.Size
 import com.google.common.base.Objects
 
 @Entity
-@Table(name = 'candidates')
+@Table(name = 'CANDIDATES')
 class Candidate implements Serializable {
     
     private static final long serialVersionUID = 1L
     
     @Id
-    @Column(name = 'candidate_id')
+    @Column(name = 'CANDIDATE_ID')
     @GeneratedValue
     Integer id
     
-    @Column(name = 'name')
+    @Column(name = 'NAME')
     @NotNull
     @Size(min = 1, max = 30)
     String name
     
     @OneToMany
-    @JoinColumn(name = 'candidate_id')
+    @JoinColumn(name = 'CANDIDATE_ID')
     Set<Interview> interviews
     
     @Override
