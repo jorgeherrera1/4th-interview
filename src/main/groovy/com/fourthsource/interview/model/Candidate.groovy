@@ -30,11 +30,6 @@ class Candidate implements Serializable {
     @Size(min = 1, max = 30)
     String name
     
-    @Column(name = 'age')
-    @Min(18l)
-    @Max(70l)
-    Integer age
-    
     @OneToMany
     @JoinColumn(name = 'candidate_id')
     Set<Interview> interviews
@@ -52,13 +47,12 @@ class Candidate implements Serializable {
         Candidate that = obj as Candidate
         
         return Objects.equal(this.id, that.id) &&
-               Objects.equal(this.name, that.name) &&
-               Objects.equal(this.age, that.age)
+               Objects.equal(this.name, that.name)
     }
     
     @Override
     public int hashCode() {
-        return Objects.hashCode(this.id, this.name, this.age)
+        return Objects.hashCode(this.id, this.name)
     }
     
     @Override
@@ -66,7 +60,6 @@ class Candidate implements Serializable {
         return Objects.toStringHelper(this)
                       .add('id', this.id)
                       .add('name', this.name)
-                      .add('age', this.age)
                       .toString()
     }
     

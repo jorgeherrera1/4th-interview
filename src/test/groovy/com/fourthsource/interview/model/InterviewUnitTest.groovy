@@ -16,9 +16,9 @@ class InterviewUnitTest {
     @Test(groups = 'unit-test')
     void "should return candidate"() {
         def interview = new Interview()
-        interview.candidate = new Candidate(id: 1, name: 'John Doe', age: 20)
+        interview.candidate = new Candidate(id: 1, name: 'John Doe')
         
-        assert interview.candidate == new Candidate(id: 1, name: 'John Doe', age: 20)
+        assert interview.candidate == new Candidate(id: 1, name: 'John Doe')
     }
     
     @Test(groups = 'unit-test')

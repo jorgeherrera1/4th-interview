@@ -24,14 +24,6 @@ class CandidateUnitTest {
 	}
 	
 	@Test(groups = 'unit-test')
-    void "should return candidate age"() {
-        def candidate = new Candidate()
-        candidate.age = 21
-        
-        assert candidate.age == 21
-    }
-    
-    @Test(groups = 'unit-test')
     void "should return interviews"() {
         def interviewDate = DateTime.now()
         
@@ -66,24 +58,24 @@ class CandidateUnitTest {
     
     @Test(groups = 'unit-test')
     void "equals should return true if candidates are equal"() {
-       def candidate = new Candidate(name: 'John Doe', age: 20)
-       def otherCandidate = new Candidate(name: 'John Doe', age: 20)
+       def candidate = new Candidate(name: 'John Doe')
+       def otherCandidate = new Candidate(name: 'John Doe')
        
        assert candidate.equals(otherCandidate)
     }
     
     @Test(groups = 'unit-test')
     void "hash code should be different for different candidates"() {
-        def candidate = new Candidate(name: 'John Doe', age: 20)
-        def otherCandidate = new Candidate(name: 'Jane Doe', age: 25)
+        def candidate = new Candidate(name: 'John Doe')
+        def otherCandidate = new Candidate(name: 'Jane Doe')
         
         assert candidate.hashCode() != otherCandidate.hashCode()
     }
     
     @Test(groups = 'unit-test')
     void "hash code should be equal if candidates are equal"() {
-       def candidate = new Candidate(name: 'John Doe', age: 20)
-       def otherCandidate = new Candidate(name: 'John Doe', age: 20)
+       def candidate = new Candidate(name: 'John Doe')
+       def otherCandidate = new Candidate(name: 'John Doe')
        
        assert candidate.hashCode() == otherCandidate.hashCode()
     }

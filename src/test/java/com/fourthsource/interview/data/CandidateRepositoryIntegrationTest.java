@@ -19,7 +19,6 @@ public class CandidateRepositoryIntegrationTest extends AbstractTransactionalTes
     public void testSave() {
         Candidate candidate = new Candidate();
         candidate.setName("John Doe");
-        candidate.setAge(20);
         
         candidate = candidateRepository.save(candidate);
         
