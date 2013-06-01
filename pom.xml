@@ -221,39 +221,6 @@
 					<groups>integration-test</groups>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>sql-maven-plugin</artifactId>
-				<version>1.5</version>
-				<dependencies>
-					<dependency>
-						<groupId>mysql</groupId>
-						<artifactId>mysql-connector-java</artifactId>
-						<version>5.1.25</version>
-					</dependency>
-				</dependencies>
-				<configuration>
-					<driver>com.mysql.jdbc.Driver</driver>
-					<url>jdbc:mysql://localhost:3306/dev</url>
-					<username>jherrera</username>
-					<password>1ei8gexw</password>
-					<autocommit>true</autocommit>
-					<srcFiles>
-					    <srcFile>src/main/database/schema/drop.sql</srcFile>
-						<srcFile>src/main/database/schema/tags.sql</srcFile>
-						<srcFile>src/main/database/schema/questions.sql</srcFile>
-						<srcFile>src/main/database/schema/question_tags.sql</srcFile>
-						<srcFile>src/main/database/schema/candidates.sql</srcFile>
-						<srcFile>src/main/database/schema/interviews.sql</srcFile>
-						<srcFile>src/main/database/schema/interview_asked_questions.sql</srcFile>
-					</srcFiles>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>com.cloudbees</groupId>
-				<artifactId>bees-maven-plugin</artifactId>
-				<version>${bees-maven-plugin-version}</version>
-			</plugin>
 		</plugins>
 	</build>
 
