@@ -1,8 +1,8 @@
 CREATE TABLE interview_asked_questions (
-   interview_id int(11)     NOT NULL,
-   question_id  int(11)     NOT NULL,
+   interview_id int         NOT NULL,
+   question_id  int         NOT NULL,
    grade        varchar(14) NOT NULL,
-   comments     longtext,
+   comments     varchar(512),
    
    PRIMARY KEY (interview_id, question_id),
    

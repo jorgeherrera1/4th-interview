@@ -1,5 +1,5 @@
 CREATE TABLE question_tags (
-   question_id int(11)     NOT NULL,
+   question_id int         NOT NULL,
    tag_name    varchar(64) NOT NULL,
    
    PRIMARY KEY (question_id, tag_name),

@@ -1,5 +1,5 @@
 CREATE TABLE tags (
    name        varchar(64) NOT NULL,
-   description longtext,
+   description varchar(512),
    PRIMARY KEY (name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
