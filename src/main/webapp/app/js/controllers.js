@@ -1,6 +1,10 @@
 'use strict';
 
-fourthInterviewApp.controller('tagController', function($scope, tagResource) {
+fourthInterviewApp.controller('appCtrl', function($scope) {
+
+});
+
+fourthInterviewApp.controller('tagCtrl', function($scope, tagResource) {
     $scope.tags = [
         { name: 'Java', description: 'Java Programming Language' },
         { name: 'PHP', description: 'PHP Programming Language' },

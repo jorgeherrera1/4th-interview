@@ -8,15 +8,19 @@
 
     <title>4th Interview</title>
 
-    <link rel="stylesheet" href="css/app.css"/>
     <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/app.css"/>
 </head>
 <body>
 <div header></div>
 <div class="container-fluid">
     <div class="row-fluid">
         <div class="span3">
-            <div side-menu></div>
+            <side-menu>
+                <side-menu-item url="#/candidates" title="Candidates"></side-menu-item>
+                <side-menu-item url="#/questions" title="Questions"></side-menu-item>
+                <side-menu-item url="#/tags" title="Tags"></side-menu-item>
+            </side-menu>
         </div>
         <div class="span9">
             <ng-view></ng-view>
