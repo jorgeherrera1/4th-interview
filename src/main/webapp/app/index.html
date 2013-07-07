@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" ng-app="fourthInterviewApp">
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Jorge Herrera">
+
+    <title>4th Interview</title>
+
+    <link rel="stylesheet" href="css/app.css"/>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+</head>
+<body>
+<div header></div>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span3">
+            <div side-menu></div>
+        </div>
+        <div class="span9">
+            <ng-view></ng-view>
+        </div>
+    </div>
+    <br>
+    <hr>
+    <footer>
+        <p>&copy; Jorge Herrera 2013</p>
+    </footer>
+</div>
+
+<script src="lib/angular/angular.js"></script>
+<script src="lib/angular/angular-resource.js"></script>
+<script src="js/app.js"></script>
+<script src="js/services.js"></script>
+<script src="js/controllers.js"></script>
+<script src="js/filters.js"></script>
+<script src="js/directives.js"></script>
+</body>
+</html>
