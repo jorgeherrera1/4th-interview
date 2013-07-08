@@ -5,10 +5,10 @@ insert into tags (name, description) values ('SQL', 'Structured query language')
 insert into tags (name, description) values ('PL/SQL', 'Oracle PL/SQL');
 
 -- Questions
-insert into questions (question, expected_answer, difficulty) values ('What is the difference between TRUNCATE and DELETE?', 'The DELETE may include a WHERE clause to limit the rows deleted, also the deletion can be rolled back whereas the TRUNCATE will delete all rows with no possibility of rolling back; additionally TRUNCATE will not fire any triggers', 20);
-insert into questions (question, expected_answer, difficulty) values ('What is the purpose of the VOLATILE keyword?', 'Every thread accessing a VOLATILE field will read its current value instead of (potentially) using a cached value', 30);
-insert into questions (question, expected_answer, difficulty) values ('How do you define a constant in PHP?', 'By using the DEFINE keyword, e.g., define("CONSTANT", "Hello World!");', 10);
-insert into questions (question, expected_answer, difficulty) values ('What is the purpose of the PRAGMA AUTONOMOUS_TRANSTACTION clause?', 'A subprogram marked with this pragma can perform DML and commit/rollback without committing/rolling back the data of the calling transaction', 30);
+insert into questions (question, expected_answer, level) values ('What is the difference between TRUNCATE and DELETE?', 'The DELETE may include a WHERE clause to limit the rows deleted, also the deletion can be rolled back whereas the TRUNCATE will delete all rows with no possibility of rolling back; additionally TRUNCATE will not fire any triggers', 'INTERMEDIATE');
+insert into questions (question, expected_answer, level) values ('What is the purpose of the VOLATILE keyword?', 'Every thread accessing a VOLATILE field will read its current value instead of (potentially) using a cached value', 'SENIOR');
+insert into questions (question, expected_answer, level) values ('How do you define a constant in PHP?', 'By using the DEFINE keyword, e.g., define("CONSTANT", "Hello World!");', 'JUNIOR');
+insert into questions (question, expected_answer, level) values ('What is the purpose of the PRAGMA AUTONOMOUS_TRANSTACTION clause?', 'A subprogram marked with this pragma can perform DML and commit/rollback without committing/rolling back the data of the calling transaction', 'SENIOR');
 
 -- Question / Tags
 insert into question_tags (question_id, tag_name) values (1, 'SQL');
