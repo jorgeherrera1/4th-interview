@@ -2,77 +2,77 @@ package com.fourthsource.interview.model
 
 import org.testng.annotations.Test
 
-class TagUnitTest {
+class SkillUnitTest {
     
     @Test(groups = 'unit-test')
-    void "should return tag name"() {
-        def tag = new Tag()
-        tag.name = 'Java'
+    void "should return skill name"() {
+        def skill = new Skill()
+        skill.name = 'Java'
         
-        assert tag.name == 'Java'
+        assert skill.name == 'Java'
     }
     
     @Test(groups = 'unit-test')
-    void "should return tag description"() {
-        def tag = new Tag()
-        tag.description = 'Java Programming Language questions'
+    void "should return skill description"() {
+        def skill = new Skill()
+        skill.description = 'Java Programming Language questions'
         
-        assert tag.description == 'Java Programming Language questions'
+        assert skill.description == 'Java Programming Language questions'
     }
     
     @Test(groups = 'unit-test')
     void "equals should return true if object is self"() {
-        def tag = new Tag()
-        def otherTag = tag
+        def skill = new Skill()
+        def otherSkill = skill
         
-        assert tag.equals(otherTag)
+        assert skill.equals(otherSkill)
     }
     
     @Test(groups = 'unit-test')
     void "equals should return false if object has different type"() {
-        def tag = new Tag()
+        def skill = new Skill()
         def otherObject = 'a string'
         
-        assert !tag.equals(otherObject)
+        assert !skill.equals(otherObject)
     }
     
     @Test(groups = 'unit-test')
     void "equals should return false if object is null"() {
-        def tag = new Tag()
+        def skill = new Skill()
         
-        assert !tag.equals(null)
+        assert !skill.equals(null)
     }
     
     @Test(groups = 'unit-test')
-    void "equals should return true if tags are equal"() {
-        def tag = new Tag(name: 'PHP', description: 'PHP language questions')
-        def otherTag = new Tag(name: 'PHP', description: 'PHP language questions')
+    void "equals should return true if skills are equal"() {
+        def skill = new Skill(name: 'PHP', description: 'PHP language questions')
+        def otherSkill = new Skill(name: 'PHP', description: 'PHP language questions')
         
-        assert tag.equals(otherTag)
+        assert skill.equals(otherSkill)
     }
     
     @Test(groups = 'unit-test')
-    void "equals should return false if tags are different"() {
-        def tag = new Tag(name: 'PHP', description: 'PHP language questions')
-        def otherTag = new Tag(name: 'Java', description: 'Java language questions')
+    void "equals should return false if skills are different"() {
+        def skill = new Skill(name: 'PHP', description: 'PHP language questions')
+        def otherSkill = new Skill(name: 'Java', description: 'Java language questions')
         
-        assert !tag.equals(otherTag)
+        assert !skill.equals(otherSkill)
     }
     
     @Test(groups = 'unit-test')
-    void "hash code should be different for different tags"() {
-        def tag = new Tag(name: 'PHP', description: 'PHP language questions')
-        def otherTag = new Tag(name: 'Java', description: 'Java language questions')
+    void "hash code should be different for different skills"() {
+        def skill = new Skill(name: 'PHP', description: 'PHP language questions')
+        def otherSkill = new Skill(name: 'Java', description: 'Java language questions')
         
-        assert tag.hashCode() != otherTag.hashCode()
+        assert skill.hashCode() != otherSkill.hashCode()
     }
     
     @Test(groups = 'unit-test')
-    void "hash code should be equal if tags are equal"() {
-        def tag = new Tag(name: 'PHP', description: 'PHP language questions')
-        def otherTag = new Tag(name: 'PHP', description: 'PHP language questions')
+    void "hash code should be equal if skills are equal"() {
+        def skill = new Skill(name: 'PHP', description: 'PHP language questions')
+        def otherSkill = new Skill(name: 'PHP', description: 'PHP language questions')
         
-        assert tag.hashCode() == otherTag.hashCode()
+        assert skill.hashCode() == otherSkill.hashCode()
     }
     
 }

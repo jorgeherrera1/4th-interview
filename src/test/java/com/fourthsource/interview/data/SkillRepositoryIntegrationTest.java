@@ -10,29 +10,29 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
 import org.testng.annotations.Test;
 
-import com.fourthsource.interview.model.Tag;
+import com.fourthsource.interview.model.Skill;
 
 @ContextConfiguration({"classpath:application-context.xml", "classpath:persistence-context.xml"})
-public class TagRepositoryIntegrationTest extends AbstractTransactionalTestNGSpringContextTests {
+public class SkillRepositoryIntegrationTest extends AbstractTransactionalTestNGSpringContextTests {
     
     @Autowired
-    private TagRepository tagRepository;
+    private SkillRepository skillRepository;
     
     @Test(groups = "integration-test")
     public void testFindAll() {
-        List<Tag> tags = tagRepository.findAll();
+        List<Skill> skills = skillRepository.findAll();
         
-        assertNotNull(tags);
-        assertEquals(tags.size(), 4);
+        assertNotNull(skills);
+        assertEquals(skills.size(), 4);
     }
     
     @Test(groups = "integration-test")
     public void testFindOne() {
-        Tag tag = tagRepository.findOne("Java");
+        Skill skill = skillRepository.findOne("Java");
         
-        assertNotNull(tag);
-        assertEquals(tag.getName(), "Java");
-        assertEquals(tag.getDescription(), "Java programming language");
+        assertNotNull(skill);
+        assertEquals(skill.getName(), "Java");
+        assertEquals(skill.getDescription(), "Java programming language");
     }
 
 }

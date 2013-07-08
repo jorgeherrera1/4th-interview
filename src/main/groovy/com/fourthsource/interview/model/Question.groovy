@@ -41,10 +41,10 @@ class Question implements Serializable {
     Level level
     
     @ManyToMany
-    @JoinTable(name = 'QUESTION_TAGS',
+    @JoinTable(name = 'QUESTION_SKILLS',
                joinColumns = @JoinColumn(name = 'QUESTION_ID'),
-               inverseJoinColumns = @JoinColumn(name = 'TAG_NAME'))
-    Set<Tag> tags
+               inverseJoinColumns = @JoinColumn(name = 'SKILL_NAME'))
+    Set<Skill> skills
     
     @Override
     public boolean equals(Object obj) {

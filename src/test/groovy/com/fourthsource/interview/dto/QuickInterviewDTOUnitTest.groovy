@@ -25,12 +25,12 @@ class QuickInterviewDTOUnitTest {
     }
     
     @Test(groups = 'unit-test')
-    void "should return interview tags"() {
+    void "should return interview skills"() {
         def quickInterview = new QuickInterviewDTO()
         
-        quickInterview.tags = Sets.newHashSet('Java', 'Object Orientation');
+        quickInterview.skills = Sets.newHashSet('Java', 'Object Orientation');
         
-        assert quickInterview.tags == Sets.newHashSet('Java', 'Object Orientation');
+        assert quickInterview.skills == Sets.newHashSet('Java', 'Object Orientation');
     }
     
     @Test(groups = 'unit-test')
@@ -61,13 +61,13 @@ class QuickInterviewDTOUnitTest {
         def quickInterview = new QuickInterviewDTO(
             candidateName: 'Jorge Herrera',
             interviewLevel: 'Junior',
-            tags: Sets.newHashSet('Java', 'Object Orientation')
+            skills: Sets.newHashSet('Java', 'Object Orientation')
         )
         
         def anotherQuickInterview = new QuickInterviewDTO(
             candidateName: 'Jorge Herrera',
             interviewLevel: 'Junior',
-            tags: Sets.newHashSet('Java', 'Object Orientation')
+            skills: Sets.newHashSet('Java', 'Object Orientation')
         )
         
         assert quickInterview.equals(anotherQuickInterview)
@@ -78,13 +78,13 @@ class QuickInterviewDTOUnitTest {
         def quickInterview = new QuickInterviewDTO(
             candidateName: 'Bart Simpson',
             interviewLevel: 'Senior',
-            tags: Sets.newHashSet('PHP', 'Object Orientation')
+            skills: Sets.newHashSet('PHP', 'Object Orientation')
         )
         
         def anotherQuickInterview = new QuickInterviewDTO(
             candidateName: 'Jorge Herrera',
             interviewLevel: 'Junior',
-            tags: Sets.newHashSet('Java', 'Object Orientation')
+            skills: Sets.newHashSet('Java', 'Object Orientation')
         )
         
         assert !quickInterview.equals(anotherQuickInterview)
@@ -95,13 +95,13 @@ class QuickInterviewDTOUnitTest {
         def quickInterview = new QuickInterviewDTO(
             candidateName: 'Jorge Herrera',
             interviewLevel: 'Junior',
-            tags: Sets.newHashSet('Java', 'Object Orientation')
+            skills: Sets.newHashSet('Java', 'Object Orientation')
         )
         
         def anotherQuickInterview = new QuickInterviewDTO(
             candidateName: 'Jorge Herrera',
             interviewLevel: 'Junior',
-            tags: Sets.newHashSet('Java', 'Object Orientation')
+            skills: Sets.newHashSet('Java', 'Object Orientation')
         )
         
         assert quickInterview.hashCode() == anotherQuickInterview.hashCode()
@@ -112,13 +112,13 @@ class QuickInterviewDTOUnitTest {
         def quickInterview = new QuickInterviewDTO(
             candidateName: 'Bart Simpson',
             interviewLevel: 'Senior',
-            tags: Sets.newHashSet('PHP', 'Object Orientation')
+            skills: Sets.newHashSet('PHP', 'Object Orientation')
         )
         
         def anotherQuickInterview = new QuickInterviewDTO(
             candidateName: 'Jorge Herrera',
             interviewLevel: 'Junior',
-            tags: Sets.newHashSet('Java', 'Object Orientation')
+            skills: Sets.newHashSet('Java', 'Object Orientation')
         )
         
         assert quickInterview.hashCode() != anotherQuickInterview.hashCode()

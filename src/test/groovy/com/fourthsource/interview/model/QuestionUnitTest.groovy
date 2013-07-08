@@ -39,11 +39,11 @@ class QuestionUnitTest {
     }
     
     @Test(groups = 'unit-test')
-    void "should return question tags"() {
+    void "should return question skills"() {
         def question = new Question()
-        question.tags = Sets.newHashSet(new Tag(name: 'Java'))
+        question.skills = Sets.newHashSet(new Skill(name: 'Java'))
         
-        assert question.tags == Sets.newHashSet(new Tag(name: 'Java'))
+        assert question.skills == Sets.newHashSet(new Skill(name: 'Java'))
     }
     
     @Test(groups = 'unit-test')
@@ -76,14 +76,14 @@ class QuestionUnitTest {
             question: 'What is the final keyword for?',
             expectedAnswer: 'Objects cannot change reference; primitives cannot change value',
             level: Level.INTERMEDIATE,
-            tags: Sets.newHashSet(new Tag(name: 'Java'))
+            skills: Sets.newHashSet(new Skill(name: 'Java'))
         );
         def otherQuestion = new Question(
             id: 123,
             question: 'What is the final keyword for?',
             expectedAnswer: 'Objects cannot change reference; primitives cannot change value',
             level: Level.INTERMEDIATE,
-            tags: Sets.newHashSet(new Tag(name: 'Java'))
+            skills: Sets.newHashSet(new Skill(name: 'Java'))
         ); 
         
         assert question.equals(otherQuestion)
@@ -96,34 +96,34 @@ class QuestionUnitTest {
             question: 'What is the final keyword for?',
             expectedAnswer: 'Objects cannot change reference; primitives cannot change value',
             level: Level.INTERMEDIATE,
-            tags: Sets.newHashSet(new Tag(name: 'Java'))
+            skills: Sets.newHashSet(new Skill(name: 'Java'))
         );
         def otherQuestion = new Question(
             id: 456,
             question: 'What is the native keyword for?',
             expectedAnswer: 'Allows Java to run native code (e.g., C, C++)',
             level: Level.SENIOR,
-            tags: Sets.newHashSet(new Tag(name: 'Java'))
+            skills: Sets.newHashSet(new Skill(name: 'Java'))
         );
         
         assert !question.equals(otherQuestion)
     }
     
     @Test(groups = 'unit-test')
-    void "hash code should be equal if tags are equal"() {
+    void "hash code should be equal if skills are equal"() {
         def question = new Question(
             id: 123,
             question: 'What is the final keyword for?',
             expectedAnswer: 'Objects cannot change reference; primitives cannot change value',
             level: Level.INTERMEDIATE,
-            tags: Sets.newHashSet(new Tag(name: 'Java'))
+            skills: Sets.newHashSet(new Skill(name: 'Java'))
         );
         def otherQuestion = new Question(
             id: 123,
             question: 'What is the final keyword for?',
             expectedAnswer: 'Objects cannot change reference; primitives cannot change value',
             level: Level.INTERMEDIATE,
-            tags: Sets.newHashSet(new Tag(name: 'Java'))
+            skills: Sets.newHashSet(new Skill(name: 'Java'))
         );
         
         assert question.hashCode() == otherQuestion.hashCode()
@@ -136,14 +136,14 @@ class QuestionUnitTest {
             question: 'What is the final keyword for?',
             expectedAnswer: 'Objects cannot change reference; primitives cannot change value',
             level: Level.INTERMEDIATE,
-            tags: Sets.newHashSet(new Tag(name: 'Java'))
+            skills: Sets.newHashSet(new Skill(name: 'Java'))
         );
         def otherQuestion = new Question(
             id: 456,
             question: 'What is the native keyword for?',
             expectedAnswer: 'Allows Java to run native code (e.g., C, C++)',
             level: Level.SENIOR,
-            tags: Sets.newHashSet(new Tag(name: 'Java'))
+            skills: Sets.newHashSet(new Skill(name: 'Java'))
         );
         
         assert question.hashCode() != otherQuestion.hashCode()

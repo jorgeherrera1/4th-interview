@@ -9,8 +9,8 @@ import javax.validation.constraints.Size;
 import com.google.common.base.Objects
 
 @Entity
-@Table(name = 'TAGS')
-class Tag implements Serializable {
+@Table(name = 'SKILLS')
+class Skill implements Serializable {
     
     @Id
     @Column(name = 'NAME')
@@ -27,11 +27,11 @@ class Tag implements Serializable {
             return true
         }
         
-        if (!(obj instanceof Tag)) {
+        if (!(obj instanceof Skill)) {
             return false
         }
         
-        Tag that = obj as Tag
+        Skill that = obj as Skill
         
         return Objects.equal(this.name, that.name) &&
                Objects.equal(this.description, that.description)

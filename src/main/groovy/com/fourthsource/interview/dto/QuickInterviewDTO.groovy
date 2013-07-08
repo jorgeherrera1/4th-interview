@@ -8,7 +8,7 @@ class QuickInterviewDTO {
     
     String interviewLevel
     
-    Set tags
+    Set skills
     
     @Override
     public boolean equals(Object obj) {
@@ -24,12 +24,12 @@ class QuickInterviewDTO {
         
         return Objects.equal(this.candidateName, that.candidateName) &&
                Objects.equal(this.interviewLevel, that.interviewLevel) &&
-               Objects.equal(this.tags, that.tags)
+               Objects.equal(this.skills, that.skills)
     }
     
     @Override
     public int hashCode() {
-        return Objects.hashCode(this.candidateName, this.interviewLevel, this.tags)
+        return Objects.hashCode(this.candidateName, this.interviewLevel, this.skills)
     }
     
     @Override
@@ -37,7 +37,7 @@ class QuickInterviewDTO {
         return Objects.toStringHelper(this)
                       .add('candidateName', this.candidateName)
                       .add('interviewLevel', this.interviewLevel)
-                      .add('tags', this.tags)
+                      .add('skills', this.skills)
                       .toString()
     }
 
