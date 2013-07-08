@@ -8,7 +8,7 @@ enum Grade {
     
     INTERMEDIATE,
     
-    ADVANZED,
+    ADVANCED,
     
     OUTSTANDING
     
