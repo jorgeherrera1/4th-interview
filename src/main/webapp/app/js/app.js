@@ -8,7 +8,15 @@ var fourthInterviewApp = angular.module('fourthInterviewApp', ['ngResource'])
 
         $routeProvider.when('/tags', {
             templateUrl: 'partials/tags.html',
-            controller: 'tagCtrl'
+            controller: 'tagCtrl',
+            resolve: {
+                tags: function($q) {
+                    var deferred = $q.defer();
+                    var successCallback = function() {
+                        deferred.resolve();
+                    };
+                }
+            }
         });
 
         $routeProvider.otherwise({redirectTo: '/'});
