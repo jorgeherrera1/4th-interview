@@ -35,7 +35,7 @@ class Question implements Serializable {
     @Size(max = 512)
     String expectedAnswer
     
-    @Column(name = 'LEVEL', length = 12)
+    @Column(name = 'QUESTION_LEVEL', length = 12)
     @Enumerated(EnumType.STRING)
     @NotNull
     Level level
