@@ -1,7 +1,7 @@
 'use strict';
 
 fourthInterviewApp.controller('appCtrl', function($scope) {
-
+    $scope.appTitle = '4th Interview';
 });
 
 fourthInterviewApp.controller('tagCtrl', function($scope, tagResource) {
