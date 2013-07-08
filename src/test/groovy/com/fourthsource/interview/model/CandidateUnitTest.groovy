@@ -22,7 +22,7 @@ class CandidateUnitTest {
 		
 		assert candidate.name == 'John Doe'
 	}
-	
+    
 	@Test(groups = 'unit-test')
     void "should return interviews"() {
         def interviewDate = DateTime.now()
@@ -58,10 +58,28 @@ class CandidateUnitTest {
     
     @Test(groups = 'unit-test')
     void "equals should return true if candidates are equal"() {
-       def candidate = new Candidate(name: 'John Doe')
-       def otherCandidate = new Candidate(name: 'John Doe')
+        def interviewDate = DateTime.now()
+        
+        def candidate = new Candidate(id: 789, name: 'John Doe')
+        candidate.interviews = Sets.newHashSet(new Interview(id: 1, candidate: candidate, date: interviewDate))
+        
+        def otherCandidate = new Candidate(id: 789, name: 'John Doe')
+        candidate.interviews = Sets.newHashSet(new Interview(id: 1, candidate: otherCandidate, date: interviewDate))
        
-       assert candidate.equals(otherCandidate)
+        assert candidate.equals(otherCandidate)
+    }
+    
+    @Test(groups = 'unit-test')
+    void "equals should return false if candidates are different"() {
+        def interviewDate = DateTime.now()
+        
+        def candidate = new Candidate(id: 789, name: 'John Doe')
+        candidate.interviews = Sets.newHashSet(new Interview(id: 1, candidate: candidate, date: interviewDate))
+        
+        def otherCandidate = new Candidate(id: 547, name: 'Jane Dao')
+        candidate.interviews = Sets.newHashSet(new Interview(id: 2, candidate: otherCandidate, date: interviewDate))
+       
+        assert !candidate.equals(otherCandidate)
     }
     
     @Test(groups = 'unit-test')
