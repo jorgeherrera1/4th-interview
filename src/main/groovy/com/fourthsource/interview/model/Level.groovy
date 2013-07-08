@@ -1,11 +1,11 @@
 package com.fourthsource.interview.model
 
-enum Difficulty {
+enum Level {
     
-	BASIC,
+	JUNIOR,
 	
 	INTERMEDIATE,
 	
-	ADVANCED
+	SENIOR
 	
 }

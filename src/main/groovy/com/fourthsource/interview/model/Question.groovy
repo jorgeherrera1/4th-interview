@@ -35,10 +35,10 @@ class Question implements Serializable {
     @Size(max = 512)
     String expectedAnswer
     
-    @Column(name = 'DIFFICULTY', length = 12)
+    @Column(name = 'LEVEL', length = 12)
     @Enumerated(EnumType.STRING)
     @NotNull
-    Difficulty difficulty
+    Level level
     
     @ManyToMany
     @JoinTable(name = 'QUESTION_TAGS',
@@ -61,12 +61,12 @@ class Question implements Serializable {
         return Objects.equal(this.id, that.id) &&
                Objects.equal(this.question, that.question) &&
                Objects.equal(this.expectedAnswer, that.expectedAnswer) &&
-               Objects.equal(this.difficulty, that.difficulty)
+               Objects.equal(this.level, that.level)
     }
     
     @Override
     public int hashCode() {
-        return Objects.hashCode(this.id, this.question, this.expectedAnswer, this.difficulty)
+        return Objects.hashCode(this.id, this.question, this.expectedAnswer, this.level)
     }
     
     @Override
@@ -75,7 +75,7 @@ class Question implements Serializable {
                       .add('id', this.id)
                       .add('question', this.question)
                       .add('expectedAnswer', this.expectedAnswer)
-                      .add('difficulty', this.difficulty)
+                      .add('level', this.level)
                       .toString()
     }
     
