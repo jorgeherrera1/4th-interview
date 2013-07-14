@@ -1,7 +1,6 @@
 package com.fourthsource.interview.data;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotNull;
 
 import java.util.List;
 
@@ -21,18 +20,23 @@ public class SkillRepositoryIntegrationTest extends AbstractTransactionalTestNGS
     @Test(groups = "integration-test")
     public void testFindAll() {
         List<Skill> skills = skillRepository.findAll();
+        int beforeNewSkill = skills.size();
         
-        assertNotNull(skills);
-        assertEquals(skills.size(), 4);
-    }
-    
-    @Test(groups = "integration-test")
-    public void testFindOne() {
-        Skill skill = skillRepository.findOne("Java");
+        Skill abcSkill = new Skill();
+        abcSkill.setName("ABC");
+        abcSkill.setDescription("ABC Skill");
         
-        assertNotNull(skill);
-        assertEquals(skill.getName(), "Java");
-        assertEquals(skill.getDescription(), "Java programming language");
+        Skill xyzSkill = new Skill();
+        xyzSkill.setName("XYZ");
+        xyzSkill.setDescription("XYZ Skill");
+        
+        skillRepository.save(abcSkill);
+        skillRepository.save(xyzSkill);
+        
+        skills = skillRepository.findAll();
+        int afterNewSkill = skills.size();
+        
+        assertEquals(afterNewSkill, beforeNewSkill + 2);
     }
 
 }
