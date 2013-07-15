@@ -1,7 +1,9 @@
 <div class="well sidebar-nav">
-    <ul class="nav nav-list" ng-transclude>
-        <li ng-repeat="item in items" ng-class="{active: item.selected}">
-            <a href="{{item.url}}" ng-click="select(item)">{{item.title}}</a>
-        </li>
+    <ul class="nav nav-list">
+        <li class="nav-header">Interviews</li>
+        <li class="active"><a href="#/candidates"><i class="icon-male pull-right"></i>&nbsp;Candidates</a></li>
+        <li class="nav-header">Administration</li>
+        <li><a href="#/questions"><i class="icon-book pull-right"></i>&nbsp;Questions</a></li>
+        <li><a href="#/skills"><i class="icon-tags pull-right"></i>&nbsp;Skills</a></li>
     </ul>
 </div>

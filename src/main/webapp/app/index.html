@@ -9,6 +9,7 @@
     <title>{{appTitle}}</title>
 
     <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/font-awesome.css"/>
     <link rel="stylesheet" href="css/app.css"/>
 </head>
 <body>
@@ -16,11 +17,7 @@
 <div class="container-fluid">
     <div class="row-fluid">
         <div class="span3">
-            <side-menu>
-                <side-menu-item url="#/candidates" title="Candidates"></side-menu-item>
-                <side-menu-item url="#/questions" title="Questions"></side-menu-item>
-                <side-menu-item url="#/skills" title="Skills"></side-menu-item>
-            </side-menu>
+            <div ng-include="'partials/side-menu.html'"></div>
         </div>
         <div class="span9">
             <ng-view></ng-view>
