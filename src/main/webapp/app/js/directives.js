@@ -1,12 +1,5 @@
 'use strict';
 
-fourthInterviewApp.directive('header', function() {
-    return {
-        restrict: 'A',
-        templateUrl: 'partials/header.html'
-    };
-});
-
 fourthInterviewApp.directive('sideMenu', function() {
     return {
         restrict: 'E',
