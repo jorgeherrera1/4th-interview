@@ -1,9 +1,10 @@
-<div class="well sidebar-nav">
+<div class="well sidebar-nav" ng-controller="sideMenuCtrl">
     <ul class="nav nav-list">
         <li class="nav-header">Interviews</li>
-        <li class="active"><a href="#/candidates"><i class="icon-male pull-right"></i>&nbsp;Candidates</a></li>
+        <li ng-class="{active:isSideMenuItemActive('Quick Interview')}"><a href="#/quick-interview"><i class="icon-file-text icon-fixed-width"></i>&nbsp;Quick Interview</a></li>
+        <li ng-class="{active:isSideMenuItemActive('Candidates')}"><a href="#/candidates"><i class="icon-male icon-fixed-width"></i>&nbsp;Candidates</a></li>
         <li class="nav-header">Administration</li>
-        <li><a href="#/questions"><i class="icon-book pull-right"></i>&nbsp;Questions</a></li>
-        <li><a href="#/skills"><i class="icon-tags pull-right"></i>&nbsp;Skills</a></li>
+        <li ng-class="{active:isSideMenuItemActive('Questions')}"><a href="#/questions"><i class="icon-book icon-fixed-width"></i>&nbsp;Questions</a></li>
+        <li ng-class="{active:isSideMenuItemActive('Skills')}"><a href="#/skills"><i class="icon-tags icon-fixed-width"></i>&nbsp;Skills</a></li>
     </ul>
 </div>

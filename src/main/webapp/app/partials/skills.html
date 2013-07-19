@@ -11,12 +11,14 @@
         <tbody>
             <tr ng-repeat="skill in skills">
                 <td>
-                    <a href="">{{skill.name}}</a>
+                    <a href="#/skills/{{skill.name}}">{{skill.name}}</a>
                 </td>
                 <td>{{skill.description}}</td>
                 <td>
-                    <i class="icon-pencil"></i>
-                    <i class="icon-trash"></i>
+                    <div class="pull-right">
+                        <button class="btn btn-mini"><i class="icon-pencil"></i>&nbsp;Modify</button>
+                        <button class="btn btn-danger btn-mini"><i class="icon-trash icon-large"></i>&nbsp;Delete</a></button>
+                    </div>
                 </td>
             </tr>
         </tbody>
