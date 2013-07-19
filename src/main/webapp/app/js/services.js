@@ -1,6 +1,6 @@
 'use strict';
 
-fourthInterviewApp.factory('skillService', function($http) {
+fourthInterviewApp.factory('skillService', ['$http', function($http) {
     return {
         listAllSkills: function(successCallback, failCallback) {
             $http({method: 'GET', url: '/skills/listAll'}).
@@ -8,4 +8,4 @@ fourthInterviewApp.factory('skillService', function($http) {
                 error(failCallback);
         }
     };
-});
+}]);

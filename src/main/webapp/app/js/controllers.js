@@ -1,9 +1,9 @@
 'use strict';
 
-fourthInterviewApp.controller('appCtrl', function($scope) {
+fourthInterviewApp.controller('appCtrl', ['$scope', function($scope) {
     $scope.appTitle = '4th Interview';
-});
+}]);
 
-fourthInterviewApp.controller('skillCtrl', function($scope, skillService) {
+fourthInterviewApp.controller('skillCtrl', ['$scope', 'skillService', function($scope, skillService) {
     $scope.skills = skillService.listAllSkills();
-});
+}]);

@@ -1,9 +1,14 @@
 package com.fourthsource.interview.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fourthsource.interview.dto.QuickInterviewDTO;
+import com.fourthsource.interview.dto.SkillDTO;
 import com.fourthsource.interview.service.InterviewService;
 
 @Controller
@@ -12,8 +17,11 @@ public class InterviewController {
     @Autowired
     private InterviewService interviewService;
     
-    public void quickInterview(QuickInterviewDTO quickInterviewDto) {
+    @RequestMapping(value = "/skills/listAll", method = RequestMethod.GET)
+    public @ResponseBody List<SkillDTO> listAllSkills() {
+        List<SkillDTO> skills = interviewService.listAllSkills();
         
+        return skills;
     }
     
 }

@@ -4,3 +4,8 @@
 .classpath
 .settings
 .springBeans
+/build
+.DS_Store
+.idea
+.gradle
+.gitignore
