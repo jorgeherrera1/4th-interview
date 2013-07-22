@@ -1,7 +1,11 @@
 'use strict';
 
-fourthInterviewApp.controller('appCtrl', ['$scope', function($scope) {
+fourthInterviewApp.controller('appCtrl', ['$scope', '$http', function($scope, $http) {
     $scope.appTitle = '4th Interview';
+
+    $scope.isWaitingForServer = function() {
+        return $http.pendingRequests.length > 0;
+    }
 }]);
 
 fourthInterviewApp.controller('sideMenuCtrl', ['$scope', function($scope) {
@@ -12,6 +16,6 @@ fourthInterviewApp.controller('sideMenuCtrl', ['$scope', function($scope) {
     };
 }]);
 
-fourthInterviewApp.controller('skillCtrl', ['$scope', 'skillService', function($scope, skillService) {
-    $scope.skills = skillService.listAllSkills();
+fourthInterviewApp.controller('skillViewCtrl', ['$scope', 'allSkills', function($scope, allSkills) {
+    $scope.allSkills = allSkills;
 }]);

@@ -7,16 +7,17 @@
                 <span class="icon-bar"></span>
             </button>
 
-            <a class="brand" href="#">4thInterview</a>
+            <a class="brand" href="#">{{appTitle}}</a>
 
             <div class="nav-collapse collapse">
-                <p class="navbar-text pull-right">
-                    <i class="icon-user icon-white"></i>&nbsp;Logged in as <a href="#" class="navbar-link">Jorge Herrera</a>
-                </p>
                 <ul class="nav">
                     <li class="active"><a href="#"><i class="icon-home icon-white"></i>&nbsp;Home</a></li>
                     <li><a href="#about"><i class="icon-beer icon-white"></i>&nbsp;About</a></li>
                 </ul>
+                <p class="navbar-text pull-right">
+                    <i class="icon-user icon-white"></i>&nbsp;&nbsp;<a href="#" class="navbar-link">Jorge Herrera</a>
+                    <i class="icon-spinner icon-spin icon-large" ng-show="isWaitingForServer()"></i>
+                </p>
             </div>
         </div>
     </div>

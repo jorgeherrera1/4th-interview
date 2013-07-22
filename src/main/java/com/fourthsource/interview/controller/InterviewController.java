@@ -17,7 +17,7 @@ public class InterviewController {
     @Autowired
     private InterviewService interviewService;
     
-    @RequestMapping(value = "/skills/listAll", method = RequestMethod.GET)
+    @RequestMapping(value = "/skills/listAll", method = RequestMethod.GET, headers = "Accept=application/json", produces = "application/json")
     public @ResponseBody List<SkillDTO> listAllSkills() {
         List<SkillDTO> skills = interviewService.listAllSkills();
         
