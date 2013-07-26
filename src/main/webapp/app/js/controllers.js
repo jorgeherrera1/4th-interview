@@ -17,5 +17,13 @@ fourthInterviewApp.controller('sideMenuCtrl', ['$scope', function($scope) {
 }]);
 
 fourthInterviewApp.controller('skillViewCtrl', ['$scope', 'allSkills', function($scope, allSkills) {
-    $scope.allSkills = allSkills;
+    var allSkills = $scope.allSkills = allSkills;
+
+    $scope.removeSkill = function(skill) {
+        var skillIndex = allSkills.indexOf(skill);
+
+        alert(JSON.stringify(skill));
+
+        allSkills.splice(skillIndex, 1);
+    }
 }]);

@@ -1,7 +1,7 @@
 'use strict';
 
 var fourthInterviewApp = angular.module('fourthInterviewApp', [])
-    .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+    .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/', {
             templateUrl: 'partials/quick-interview.html'
         });
