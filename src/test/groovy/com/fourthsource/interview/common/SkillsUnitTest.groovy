@@ -10,7 +10,12 @@ class SkillsUnitTest {
     
     @Test(groups = 'unit-test', expectedExceptions = NullPointerException)
     void "toDTO should fail if null is passed as parameter"() {
-        Skills.toDTO(null);
+        Skills.toDTO(null)
+    }
+
+    @Test(groups = 'unit-test', expectedExceptions = NullPointerException)
+    void "fromDTO should fail if null is passed as parameter"() {
+        Skills.fromDTO(null)
     }
     
     @Test(groups = 'unit-test')
@@ -24,6 +29,19 @@ class SkillsUnitTest {
         assert dto instanceof SkillDTO
         assert dto.name == 'Java'
         assert dto.description == 'Java Programming Language'
+    }
+
+    @Test(groups = 'unit-test')
+    void "fromDTO should return Skill"() {
+        def dto = new SkillDTO()
+        dto.name = 'Design Patterns'
+        dto.description = 'Design patterns about object oriented languages'
+
+        def skill = Skills.fromDTO(dto)
+
+        assert skill instanceof Skill
+        assert skill.name == 'Design Patterns'
+        assert skill.description == 'Design patterns about object oriented languages'
     }
     
     @Test(groups = 'unit-test', expectedExceptions = NullPointerException)

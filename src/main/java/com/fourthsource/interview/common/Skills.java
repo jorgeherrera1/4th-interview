@@ -15,6 +15,7 @@ public final class Skills {
 
     private static final Function<Skill, SkillDTO> toDTOFunction = new Function<Skill, SkillDTO>() {
 
+        @Override
         public SkillDTO apply(Skill skill) {
             Preconditions.checkNotNull(skill);
 
@@ -27,10 +28,31 @@ public final class Skills {
 
     };
 
+    private static final Function<SkillDTO, Skill> fromDTOFunction = new Function<SkillDTO, Skill>() {
+
+        @Override
+        public Skill apply(SkillDTO dto) {
+            Preconditions.checkNotNull(dto);
+
+            Skill skill = new Skill();
+            skill.setName(dto.getName());
+            skill.setDescription(dto.getDescription());
+
+            return skill;
+        }
+
+    };
+
     public static SkillDTO toDTO(Skill skill) {
         SkillDTO dto = toDTOFunction.apply(skill);
         
         return dto;
+    }
+
+    public static Skill fromDTO(SkillDTO dto) {
+        Skill skill = fromDTOFunction.apply(dto);
+
+        return skill;
     }
 
     public static Collection<SkillDTO> toCollectionOfDTOs(
