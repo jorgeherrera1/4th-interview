@@ -2,6 +2,7 @@ package com.fourthsource.interview.service;
 
 import java.util.List;
 
+import com.google.common.base.Preconditions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,7 +26,16 @@ public class InterviewServiceImpl implements InterviewService {
         
         return dtos;
     }
-    
+
+    @Override
+    @Transactional
+    public void removeSkill(SkillDTO dto) {
+        Preconditions.checkNotNull(dto);
+
+        Skill skill = Skills.fromDTO(dto);
+        skillRepository.delete(skill);
+    }
+
     @Autowired
     public void setSkillRepository(SkillRepository skillRepository) {
         this.skillRepository = skillRepository;

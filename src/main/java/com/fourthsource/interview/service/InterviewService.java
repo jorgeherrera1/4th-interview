@@ -7,5 +7,7 @@ import com.fourthsource.interview.dto.SkillDTO;
 public interface InterviewService {
     
     List<SkillDTO> listAllSkills();
+
+    void removeSkill(SkillDTO skillDTO);
     
 }
