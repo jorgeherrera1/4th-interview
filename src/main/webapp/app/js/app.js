@@ -10,6 +10,10 @@ var fourthInterviewApp = angular.module('fourthInterviewApp', [])
             templateUrl: 'partials/quick-interview.html'
         });
 
+        $routeProvider.when('/candidates', {
+            templateUrl: 'partials/candidates.html'
+        });
+
         $routeProvider.when('/questions', {
             templateUrl: 'partials/questions.html'
         });
