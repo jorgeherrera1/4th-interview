@@ -16,7 +16,7 @@ fourthInterviewApp.controller('sideMenuCtrl', ['$scope', function($scope) {
     };
 }]);
 
-fourthInterviewApp.controller('skillViewCtrl', ['$scope', 'allSkills', function($scope, allSkills) {
+fourthInterviewApp.controller('skillViewCtrl', ['$scope', 'allSkills', '$dialog', function($scope, allSkills, $dialog) {
     var allSkills = $scope.allSkills = allSkills;
 
     $scope.modifySkill = function(skill) {
@@ -24,10 +24,17 @@ fourthInterviewApp.controller('skillViewCtrl', ['$scope', 'allSkills', function(
     }
 
     $scope.removeSkill = function(skill) {
-        var skillIndex = allSkills.indexOf(skill);
+        var title = 'Remove Skill';
+        var msg = 'Are you sure you want to remove ' + skill.name + '?';
+        var btns = [{result:'no', label: 'No'}, {result:'yes', label: 'Yes', cssClass: 'btn-danger'}];
 
-        alert(JSON.stringify(skill));
+        var removeSkillSecondCheck = function(result) {
+            if (result == 'yes') {
+                var skillIndex = allSkills.indexOf(skill);
+                allSkills.splice(skillIndex, 1);
+            }
+        }
 
-        allSkills.splice(skillIndex, 1);
+        $dialog.messageBox(title, msg, btns).open().then(removeSkillSecondCheck);
     }
 }]);

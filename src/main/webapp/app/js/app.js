@@ -1,6 +1,6 @@
 'use strict';
 
-var fourthInterviewApp = angular.module('fourthInterviewApp', [])
+var fourthInterviewApp = angular.module('fourthInterviewApp', ['ui.bootstrap'])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/', {
             templateUrl: 'partials/quick-interview.html'
