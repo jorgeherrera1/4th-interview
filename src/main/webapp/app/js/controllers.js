@@ -3,8 +3,15 @@
 fourthInterviewApp.controller('appCtrl', ['$scope', '$http', function($scope, $http) {
     $scope.appTitle = '4th Interview';
 
+    $scope.notifications = [];
+
     $scope.isWaitingForServer = function() {
         return $http.pendingRequests.length > 0;
+    }
+
+    $scope.closeNotification = function(notification) {
+        var notificationIndex = $scope.notifications.indexOf(notification);
+        $scope.notifications.splice(notificationIndex, 1);
     }
 }]);
 
@@ -15,6 +22,8 @@ fourthInterviewApp.controller('sideMenuCtrl', ['$scope', function($scope) {
         return $scope.activeSideMenuItem == sideMenuItem;
     };
 }]);
+
+
 
 fourthInterviewApp.controller('skillViewCtrl', ['$scope', 'allSkills', '$dialog', function($scope, allSkills, $dialog) {
     var allSkills = $scope.allSkills = allSkills;
@@ -32,6 +41,11 @@ fourthInterviewApp.controller('skillViewCtrl', ['$scope', 'allSkills', '$dialog'
             if (result == 'yes') {
                 var skillIndex = allSkills.indexOf(skill);
                 allSkills.splice(skillIndex, 1);
+
+                $scope.$parent.notifications.push({
+                    type: 'success',
+                    text: skill.name + ' was successfully removed from the skills'
+                });
             }
         }
 

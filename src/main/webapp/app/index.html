@@ -20,6 +20,7 @@
             <div ng-include="'partials/side-menu.html'"></div>
         </div>
         <div class="span9">
+            <alert ng-repeat="notification in notifications" type="notification.type" close="closeNotification(notification)">{{notification.text}}</alert>
             <div ng-view class="container-fluid"></div>
         </div>
     </div>
