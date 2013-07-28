@@ -14,6 +14,7 @@
     </bean>
 
 	<mvc:resources location="/app/" mapping="/app/**" cache-period="0" />
+    <mvc:resources location="/favicon.ico" mapping="/favicon.ico" />
 
     <context:component-scan base-package="com.fourthsource.interview.controller" />
 
