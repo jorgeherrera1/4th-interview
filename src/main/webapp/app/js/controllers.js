@@ -25,7 +25,8 @@ fourthInterviewApp.controller('sideMenuCtrl', ['$scope', function($scope) {
 
 
 
-fourthInterviewApp.controller('skillViewCtrl', ['$scope', 'allSkills', '$dialog', function($scope, allSkills, $dialog) {
+fourthInterviewApp.controller('skillViewCtrl', ['$scope', 'allSkills', 'skillService', '$dialog',
+function($scope, allSkills, skillService, $dialog) {
     var allSkills = $scope.allSkills = allSkills;
 
     $scope.modifySkill = function(skill) {
@@ -39,12 +40,14 @@ fourthInterviewApp.controller('skillViewCtrl', ['$scope', 'allSkills', '$dialog'
 
         var removeSkillSecondCheck = function(result) {
             if (result == 'yes') {
-                var skillIndex = allSkills.indexOf(skill);
-                allSkills.splice(skillIndex, 1);
+                skillService.removeSkill(skill, function() {
+                    var skillIndex = allSkills.indexOf(skill);
+                    allSkills.splice(skillIndex, 1);
 
-                $scope.$parent.notifications.push({
-                    type: 'success',
-                    text: skill.name + ' was successfully removed from the skills'
+                    $scope.$parent.notifications.push({
+                        type: 'success',
+                        text: skill.name + ' was successfully removed from the skills'
+                    });
                 });
             }
         }

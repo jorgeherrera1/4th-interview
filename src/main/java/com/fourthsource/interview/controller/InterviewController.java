@@ -1,19 +1,17 @@
 package com.fourthsource.interview.controller;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.fourthsource.interview.dto.SkillDTO;
 import com.fourthsource.interview.service.InterviewService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 public class InterviewController {
-    
+
     @Autowired
     private InterviewService interviewService;
     
@@ -23,6 +21,13 @@ public class InterviewController {
         List<SkillDTO> skills = interviewService.listAllSkills();
         
         return skills;
+    }
+
+    @RequestMapping(value = "/skills/remove.json",
+            method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.OK)
+    public void removeSkill(@RequestBody SkillDTO skill) {
+        interviewService.removeSkill(skill);
     }
     
 }
