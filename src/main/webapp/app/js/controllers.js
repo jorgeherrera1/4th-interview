@@ -30,7 +30,15 @@ function($scope, allSkills, skillService, $dialog) {
     var allSkills = $scope.allSkills = allSkills;
 
     $scope.modifySkill = function(skill) {
-        alert('Modify: ' + JSON.stringify(skill));
+        var d = $dialog.dialog({
+            backdrop: true,
+            keyboard: true,
+            backdropClick: true,
+            dialogFade: true,
+            backdropFade: true,
+            templateUrl: 'partials/skill-edit.html'
+        });
+        d.open();
     }
 
     $scope.removeSkill = function(skill) {

@@ -10,10 +10,8 @@
         </thead>
         <tbody>
             <tr ng-repeat="skill in allSkills">
-                <td>
-                    <a href="#/skills/{{skill.name}}">{{skill.name}}</a>
-                </td>
-                <td>{{skill.description}}</td>
+                <td>{{skill.name}}</td>
+                <td><small>{{skill.description}}</small></td>
                 <td>
                     <div class="pull-right">
                         <button ng-click="modifySkill(skill)" class="btn btn-mini"><i class="icon-pencil"></i>&nbsp;Modify</button>
