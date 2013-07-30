@@ -23,7 +23,11 @@ fourthInterviewApp.controller('sideMenuCtrl', ['$scope', function($scope) {
     };
 }]);
 
+fourthInterviewApp.controller('skillEditCtrl', ['$scope', 'dialog', 'skill', function($scope, dialog, skill){
+    $scope.skill = skill;
 
+    console.log(JSON.stringify(skill));
+}]);
 
 fourthInterviewApp.controller('skillViewCtrl', ['$scope', 'allSkills', 'skillService', '$dialog',
 function($scope, allSkills, skillService, $dialog) {
@@ -31,14 +35,13 @@ function($scope, allSkills, skillService, $dialog) {
 
     $scope.modifySkill = function(skill) {
         var d = $dialog.dialog({
-            backdrop: true,
-            keyboard: true,
-            backdropClick: true,
-            dialogFade: true,
-            backdropFade: true,
-            templateUrl: 'partials/skill-edit.html'
+            resolve: {
+                skill: function() {
+                    return angular.copy(skill);
+                }
+            }
         });
-        d.open();
+        d.open('partials/skill-edit.html', 'skillEditCtrl');
     }
 
     $scope.removeSkill = function(skill) {
