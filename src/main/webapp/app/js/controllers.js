@@ -26,7 +26,13 @@ fourthInterviewApp.controller('sideMenuCtrl', ['$scope', function($scope) {
 fourthInterviewApp.controller('skillEditCtrl', ['$scope', 'dialog', 'skill', function($scope, dialog, skill){
     $scope.skill = skill;
 
-    console.log(JSON.stringify(skill));
+    $scope.saveSkill = function() {
+        dialog.close($scope.skill);
+    }
+
+    $scope.closeSkillDialog = function() {
+        dialog.close();
+    }
 }]);
 
 fourthInterviewApp.controller('skillViewCtrl', ['$scope', 'allSkills', 'skillService', '$dialog',
@@ -47,7 +53,8 @@ function($scope, allSkills, skillService, $dialog) {
     $scope.removeSkill = function(skill) {
         var title = 'Remove Skill';
         var msg = 'Are you sure you want to remove ' + skill.name + '?';
-        var btns = [{result:'no', label: 'No'}, {result:'yes', label: 'Yes', cssClass: 'btn-danger'}];
+        var btns = [{result:'no', label: 'No', cssClass: 'btn-small'},
+            {result:'yes', label: 'Yes', cssClass: 'btn-danger'}];
 
         var removeSkillSecondCheck = function(result) {
             if (result == 'yes') {
