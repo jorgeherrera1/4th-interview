@@ -36,6 +36,6 @@
     
     <jpa:repositories base-package="com.fourthsource.interview.data" />
     
-    <tx:annotation-driven />
+    <tx:annotation-driven transaction-manager="transactionManager" />
 
 </beans>
