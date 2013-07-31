@@ -36,6 +36,16 @@ public class InterviewServiceImpl implements InterviewService {
         skillRepository.delete(skill);
     }
 
+    @Override
+    @Transactional
+    public void saveSkill(SkillDTO dto) {
+        Preconditions.checkNotNull(dto);
+        Preconditions.checkNotNull(dto.getName());
+
+        Skill skill = Skills.fromDTO(dto);
+        skillRepository.save(skill);
+    }
+
     @Autowired
     public void setSkillRepository(SkillRepository skillRepository) {
         this.skillRepository = skillRepository;

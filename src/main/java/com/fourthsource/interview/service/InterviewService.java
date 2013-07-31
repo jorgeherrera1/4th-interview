@@ -9,5 +9,7 @@ public interface InterviewService {
     List<SkillDTO> listAllSkills();
 
     void removeSkill(SkillDTO skillDTO);
-    
+
+    void saveSkill(SkillDTO dto);
+
 }

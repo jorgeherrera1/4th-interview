@@ -55,5 +55,25 @@ class InterviewServiceImplUnitTest {
 
         verify(skillRepository).delete(isA(Skill))
     }
+
+    @Test(groups = 'unit-test', expectedExceptions = NullPointerException)
+    void "should break if trying to save a null skill"() {
+        interviewService.saveSkill(null)
+    }
+
+    @Test(groups = 'unit-test', expectedExceptions = NullPointerException)
+    void "should break if trying to save a skill with no name"() {
+        interviewService.saveSkill(new SkillDTO())
+    }
+
+    @Test(groups = 'unit-test')
+    void "should save a skill"() {
+        doNothing().when(skillRepository).save(isA(Skill))
+
+        def skillDTO = new SkillDTO(name: 'Java', description: 'Java Language')
+        interviewService.saveSkill(skillDTO)
+
+        verify(skillRepository).save(isA(Skill))
+    }
     
 }
