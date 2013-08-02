@@ -8,6 +8,10 @@ fourthInterviewApp.factory('skillService', ['$http', function($http) {
 
         removeSkill: function(skill, successCallback) {
             $http.post('/skills/remove.json', skill).success(successCallback);
+        },
+
+        saveSkill: function(skill, successCallback) {
+            $http.post('/skills/save.json', skill).success(successCallback);
         }
     };
 }]);

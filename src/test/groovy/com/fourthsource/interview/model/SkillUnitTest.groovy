@@ -3,7 +3,15 @@ package com.fourthsource.interview.model
 import org.testng.annotations.Test
 
 class SkillUnitTest {
-    
+
+    @Test(groups = 'unit-test')
+    void "should return skill id"() {
+        def skill = new Skill()
+        skill.id = 1234
+
+        assert skill.id == 1234
+    }
+
     @Test(groups = 'unit-test')
     void "should return skill name"() {
         def skill = new Skill()
@@ -45,32 +53,32 @@ class SkillUnitTest {
     
     @Test(groups = 'unit-test')
     void "equals should return true if skills are equal"() {
-        def skill = new Skill(name: 'PHP', description: 'PHP language questions')
-        def otherSkill = new Skill(name: 'PHP', description: 'PHP language questions')
+        def skill = new Skill(id: 1234,name: 'PHP', description: 'PHP language questions')
+        def otherSkill = new Skill(id: 1234, name: 'PHP', description: 'PHP language questions')
         
         assert skill.equals(otherSkill)
     }
     
     @Test(groups = 'unit-test')
     void "equals should return false if skills are different"() {
-        def skill = new Skill(name: 'PHP', description: 'PHP language questions')
-        def otherSkill = new Skill(name: 'Java', description: 'Java language questions')
+        def skill = new Skill(id: 1234, name: 'PHP', description: 'PHP language questions')
+        def otherSkill = new Skill(id: 5678, name: 'Java', description: 'Java language questions')
         
         assert !skill.equals(otherSkill)
     }
     
     @Test(groups = 'unit-test')
     void "hash code should be different for different skills"() {
-        def skill = new Skill(name: 'PHP', description: 'PHP language questions')
-        def otherSkill = new Skill(name: 'Java', description: 'Java language questions')
+        def skill = new Skill(id: 1234, name: 'PHP', description: 'PHP language questions')
+        def otherSkill = new Skill(id: 5678, name: 'Java', description: 'Java language questions')
         
         assert skill.hashCode() != otherSkill.hashCode()
     }
     
     @Test(groups = 'unit-test')
     void "hash code should be equal if skills are equal"() {
-        def skill = new Skill(name: 'PHP', description: 'PHP language questions')
-        def otherSkill = new Skill(name: 'PHP', description: 'PHP language questions')
+        def skill = new Skill(id: 3456, name: 'PHP', description: 'PHP language questions')
+        def otherSkill = new Skill(id: 3456, name: 'PHP', description: 'PHP language questions')
         
         assert skill.hashCode() == otherSkill.hashCode()
     }

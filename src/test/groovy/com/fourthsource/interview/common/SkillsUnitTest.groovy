@@ -21,12 +21,14 @@ class SkillsUnitTest {
     @Test(groups = 'unit-test')
     void "toDTO should return SkillDTO"() {
         def skill = new Skill()
+        skill.id = 1234
         skill.name = 'Java'
         skill.description = 'Java Programming Language'
         
         def dto = Skills.toDTO(skill)
-        
+
         assert dto instanceof SkillDTO
+        assert dto.id == 1234
         assert dto.name == 'Java'
         assert dto.description == 'Java Programming Language'
     }
@@ -34,12 +36,14 @@ class SkillsUnitTest {
     @Test(groups = 'unit-test')
     void "fromDTO should return Skill"() {
         def dto = new SkillDTO()
+        dto.id = 1234
         dto.name = 'Design Patterns'
         dto.description = 'Design patterns about object oriented languages'
 
         def skill = Skills.fromDTO(dto)
 
         assert skill instanceof Skill
+        assert skill.id == 1234
         assert skill.name == 'Design Patterns'
         assert skill.description == 'Design patterns about object oriented languages'
     }
@@ -51,8 +55,8 @@ class SkillsUnitTest {
     
     @Test(groups = 'unit-test')
     void "toCollectionOfDTOs should return collection of SkillDTOs"() {
-        def javaSkill = new Skill(name: 'Java', description: 'Java Programming Language')
-        def phpSkill = new Skill(name: 'PHP', description: 'PHP Programming Language')
+        def javaSkill = new Skill(id: 1234, name: 'Java', description: 'Java Programming Language')
+        def phpSkill = new Skill(id: 5678, name: 'PHP', description: 'PHP Programming Language')
         def skills = [ javaSkill, phpSkill ]
         
         def dtos = Skills.toCollectionOfDTOs(skills);
@@ -61,8 +65,10 @@ class SkillsUnitTest {
         dtos.each {
             assert it instanceof SkillDTO
         }
+        assert dtos[0].id == 1234
         assert dtos[0].name == 'Java'
         assert dtos[0].description == 'Java Programming Language'
+        assert dtos[1].id == 5678
         assert dtos[1].name == 'PHP'
         assert dtos[1].description == 'PHP Programming Language'
     }

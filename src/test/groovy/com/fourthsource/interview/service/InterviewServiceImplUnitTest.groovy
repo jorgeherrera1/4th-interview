@@ -10,6 +10,7 @@ import org.testng.annotations.Test
 
 import static org.mockito.Matchers.isA
 import static org.mockito.Mockito.doNothing
+import static org.mockito.Mockito.doReturn
 import static org.mockito.Mockito.verify
 import static org.mockito.Mockito.when
 
@@ -31,8 +32,8 @@ class InterviewServiceImplUnitTest {
     @Test(groups = 'unit-test')
     void "should return all skills"() {
         when(skillRepository.findAll()).thenReturn(
-            [ new Skill(name: 'PHP', description: 'PHP Language'),
-              new Skill(name: 'Java', description: 'Java Language') ]
+            [ new Skill(id: 1234, name: 'PHP', description: 'PHP Language'),
+              new Skill(id: 5678, name: 'Java', description: 'Java Language') ]
         )
         
         def skills = interviewService.listAllSkills()
@@ -50,7 +51,7 @@ class InterviewServiceImplUnitTest {
     void "should remove a skill"() {
         doNothing().when(skillRepository).delete(isA(Skill))
 
-        def skillDTO = new SkillDTO(name: 'JavaScript', description: 'JavaScript Language')
+        def skillDTO = new SkillDTO(id: 1234, name: 'JavaScript', description: 'JavaScript Language')
         interviewService.removeSkill(skillDTO)
 
         verify(skillRepository).delete(isA(Skill))
@@ -68,9 +69,9 @@ class InterviewServiceImplUnitTest {
 
     @Test(groups = 'unit-test')
     void "should save a skill"() {
-        doNothing().when(skillRepository).save(isA(Skill))
+        doReturn(new Skill(id: 1234, name: 'Java', description: 'Java Language')).when(skillRepository).save(isA(Skill))
 
-        def skillDTO = new SkillDTO(name: 'Java', description: 'Java Language')
+        def skillDTO = new SkillDTO(id: 1234, name: 'Java', description: 'Java Language')
         interviewService.saveSkill(skillDTO)
 
         verify(skillRepository).save(isA(Skill))

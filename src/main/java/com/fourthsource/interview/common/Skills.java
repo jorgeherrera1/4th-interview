@@ -20,6 +20,7 @@ public final class Skills {
             Preconditions.checkNotNull(skill);
 
             SkillDTO dto = new SkillDTO();
+            dto.setId(skill.getId());
             dto.setName(skill.getName());
             dto.setDescription(skill.getDescription());
 
@@ -35,6 +36,7 @@ public final class Skills {
             Preconditions.checkNotNull(dto);
 
             Skill skill = new Skill();
+            skill.setId(dto.getId());
             skill.setName(dto.getName());
             skill.setDescription(dto.getDescription());
 

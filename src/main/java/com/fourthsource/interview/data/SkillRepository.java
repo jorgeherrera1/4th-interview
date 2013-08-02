@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.fourthsource.interview.model.Skill;
 
-public interface SkillRepository extends JpaRepository<Skill, String> {
+public interface SkillRepository extends JpaRepository<Skill, Integer> {
     
     
     
