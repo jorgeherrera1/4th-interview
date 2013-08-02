@@ -4,6 +4,7 @@ import com.google.common.base.Objects
 
 import javax.persistence.Column
 import javax.persistence.Entity
+import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.persistence.Table
 import javax.validation.constraints.NotNull
@@ -15,6 +16,7 @@ class Skill implements Serializable {
     
     @Id
     @Column(name = 'SKILL_ID')
+    @GeneratedValue
     Integer id
 
     @Column(name = 'NAME', unique = true)
