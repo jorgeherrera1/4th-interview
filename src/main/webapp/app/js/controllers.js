@@ -3,8 +3,6 @@
 fourthInterviewApp.controller('appCtrl', ['$scope', '$http', function($scope, $http) {
     $scope.appTitle = '4th Interview';
 
-    $scope.notifications = [];
-
     $scope.isWaitingForServer = function() {
         return $http.pendingRequests.length > 0;
     }
@@ -29,7 +27,10 @@ function($scope, dialog, skill, skillService){
 
     $scope.saveSkill = function() {
         skillService.saveSkill($scope.skill, function() {
-
+            $scope.notifications.push({
+                type: 'success',
+                text: $scope.skill.name + ' was successfully modified'
+            });
         });
 
         dialog.close($scope.skill);
@@ -48,11 +49,13 @@ function($scope, allSkills, skillService, $dialog) {
         var d = $dialog.dialog({
             resolve: {
                 skill: function() {
-                    return skill;
+                    return angular.copy(skill);
                 }
             }
         });
-        d.open('partials/skill-edit.html', 'skillEditCtrl');
+        d.open('partials/skill-edit.html', 'skillEditCtrl').then(function(result) {
+            angular.extend(skill, result);
+        });
     }
 
     $scope.removeSkill = function(skill) {
@@ -67,7 +70,7 @@ function($scope, allSkills, skillService, $dialog) {
                     var skillIndex = allSkills.indexOf(skill);
                     allSkills.splice(skillIndex, 1);
 
-                    $scope.$parent.notifications.push({
+                    $scope.notifications.push({
                         type: 'success',
                         text: skill.name + ' was successfully removed from the skills'
                     });

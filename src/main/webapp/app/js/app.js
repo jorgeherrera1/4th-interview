@@ -33,4 +33,7 @@ var fourthInterviewApp = angular.module('fourthInterviewApp', ['ui.bootstrap'])
                 }]
             }
         });
+    }])
+    .run(['$rootScope', function($rootScope) {
+        $rootScope.notifications = [];
     }]);
