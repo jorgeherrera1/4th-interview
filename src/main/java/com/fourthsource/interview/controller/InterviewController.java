@@ -29,5 +29,12 @@ public class InterviewController {
     public void removeSkill(@RequestBody SkillDTO skill) {
         interviewService.removeSkill(skill);
     }
+
+    @RequestMapping(value = "/skills/save.json",
+            method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.OK)
+    public void saveSkill(@RequestBody SkillDTO skill) {
+        interviewService.saveSkill(skill);
+    }
     
 }

@@ -23,10 +23,15 @@ fourthInterviewApp.controller('sideMenuCtrl', ['$scope', function($scope) {
     };
 }]);
 
-fourthInterviewApp.controller('skillEditCtrl', ['$scope', 'dialog', 'skill', function($scope, dialog, skill){
-    $scope.skill = skill;
+fourthInterviewApp.controller('skillEditCtrl', ['$scope', 'dialog', 'skill', 'skillService',
+function($scope, dialog, skill, skillService){
+    $scope.skill = angular.copy(skill);
 
     $scope.saveSkill = function() {
+        skillService.saveSkill($scope.skill, function() {
+
+        });
+
         dialog.close($scope.skill);
     }
 
@@ -43,7 +48,7 @@ function($scope, allSkills, skillService, $dialog) {
         var d = $dialog.dialog({
             resolve: {
                 skill: function() {
-                    return angular.copy(skill);
+                    return skill;
                 }
             }
         });
