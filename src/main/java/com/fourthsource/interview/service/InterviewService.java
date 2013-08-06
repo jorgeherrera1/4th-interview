@@ -10,6 +10,6 @@ public interface InterviewService {
 
     void removeSkill(SkillDTO skillDTO);
 
-    void saveSkill(SkillDTO dto);
+    SkillDTO saveSkill(SkillDTO dto);
 
 }

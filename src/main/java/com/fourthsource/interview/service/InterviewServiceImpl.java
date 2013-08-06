@@ -1,17 +1,16 @@
 package com.fourthsource.interview.service;
 
-import java.util.List;
-
-import com.google.common.base.Preconditions;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.fourthsource.interview.common.Skills;
 import com.fourthsource.interview.data.SkillRepository;
 import com.fourthsource.interview.dto.SkillDTO;
 import com.fourthsource.interview.model.Skill;
+import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 public class InterviewServiceImpl implements InterviewService {
@@ -38,12 +37,13 @@ public class InterviewServiceImpl implements InterviewService {
 
     @Override
     @Transactional
-    public void saveSkill(SkillDTO dto) {
+    public SkillDTO saveSkill(SkillDTO dto) {
         Preconditions.checkNotNull(dto);
-        Preconditions.checkNotNull(dto.getName());
 
         Skill skill = Skills.fromDTO(dto);
-        skillRepository.save(skill);
+        skill = skillRepository.save(skill);
+
+        return Skills.toDTO(skill);
     }
 
     @Autowired

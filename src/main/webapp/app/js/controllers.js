@@ -5,12 +5,12 @@ fourthInterviewApp.controller('appCtrl', ['$scope', '$http', function($scope, $h
 
     $scope.isWaitingForServer = function() {
         return $http.pendingRequests.length > 0;
-    }
+    };
 
     $scope.closeNotification = function(notification) {
         var notificationIndex = $scope.notifications.indexOf(notification);
         $scope.notifications.splice(notificationIndex, 1);
-    }
+    };
 }]);
 
 fourthInterviewApp.controller('sideMenuCtrl', ['$scope', function($scope) {
@@ -26,7 +26,9 @@ function($scope, dialog, skill, skillService){
     $scope.skill = angular.copy(skill);
 
     $scope.saveSkill = function() {
-        skillService.saveSkill($scope.skill, function() {
+        skillService.saveSkill($scope.skill, function(data) {
+            $scope.skill = data;
+
             $scope.notifications.push({
                 type: 'success',
                 text: $scope.skill.name + ' was successfully saved'
@@ -34,11 +36,11 @@ function($scope, dialog, skill, skillService){
         });
 
         dialog.close($scope.skill);
-    }
+    };
 
     $scope.closeSkillDialog = function() {
         dialog.close();
-    }
+    };
 }]);
 
 fourthInterviewApp.controller('skillViewCtrl', ['$scope', 'allSkills', 'skillService', '$dialog',
@@ -91,7 +93,7 @@ function($scope, allSkills, skillService, $dialog) {
                     });
                 });
             }
-        }
+        };
 
         $dialog.messageBox(title, msg, btns).open().then(removeSkillSecondCheck);
     };

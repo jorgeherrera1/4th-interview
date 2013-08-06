@@ -72,9 +72,9 @@ class InterviewServiceImplUnitTest {
         doReturn(new Skill(id: 1234, name: 'Java', description: 'Java Language')).when(skillRepository).save(isA(Skill))
 
         def skillDTO = new SkillDTO(id: 1234, name: 'Java', description: 'Java Language')
-        interviewService.saveSkill(skillDTO)
+        def savedSkillDto = interviewService.saveSkill(skillDTO)
 
-        verify(skillRepository).save(isA(Skill))
+        assert skillDTO == savedSkillDto
     }
     
 }

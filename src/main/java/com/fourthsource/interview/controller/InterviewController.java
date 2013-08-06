@@ -17,6 +17,7 @@ public class InterviewController {
     
     @RequestMapping(value = "/skills/listAll.json",
             method = RequestMethod.GET, produces = "application/json")
+    @ResponseStatus(HttpStatus.OK)
     public @ResponseBody List<SkillDTO> listAllSkills() {
         List<SkillDTO> skills = interviewService.listAllSkills();
         
@@ -33,8 +34,10 @@ public class InterviewController {
     @RequestMapping(value = "/skills/save.json",
             method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
-    public void saveSkill(@RequestBody SkillDTO skill) {
-        interviewService.saveSkill(skill);
+    public @ResponseBody SkillDTO saveSkill(@RequestBody SkillDTO skill) {
+        SkillDTO savedSkill = interviewService.saveSkill(skill);
+
+        return savedSkill;
     }
     
 }
