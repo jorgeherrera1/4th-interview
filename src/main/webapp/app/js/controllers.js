@@ -33,9 +33,9 @@ function($scope, dialog, skill, skillService){
                 type: 'success',
                 text: $scope.skill.name + ' was successfully saved'
             });
-        });
 
-        dialog.close($scope.skill);
+            dialog.close($scope.skill);
+        });
     };
 
     $scope.closeSkillDialog = function() {
@@ -45,7 +45,7 @@ function($scope, dialog, skill, skillService){
 
 fourthInterviewApp.controller('skillViewCtrl', ['$scope', 'allSkills', 'skillService', '$dialog',
 function($scope, allSkills, skillService, $dialog) {
-    var allSkills = $scope.allSkills = allSkills;
+    $scope.allSkills = allSkills;
 
     $scope.newSkill = function() {
         var skillEditDialog = $dialog.dialog({
@@ -57,7 +57,7 @@ function($scope, allSkills, skillService, $dialog) {
         });
         skillEditDialog.open('partials/skill-edit.html', 'skillEditCtrl').then(function(result) {
             if (result) {
-                allSkills.push(result);
+                $scope.allSkills.push(result);
             }
         });
     };
@@ -84,8 +84,8 @@ function($scope, allSkills, skillService, $dialog) {
         var removeSkillSecondCheck = function(result) {
             if (result == 'yes') {
                 skillService.removeSkill(skill, function() {
-                    var skillIndex = allSkills.indexOf(skill);
-                    allSkills.splice(skillIndex, 1);
+                    var skillIndex = $scope.allSkills.indexOf(skill);
+                    $scope.allSkills.splice(skillIndex, 1);
 
                     $scope.notifications.push({
                         type: 'success',
