@@ -13,6 +13,14 @@ fourthInterviewApp.controller('appCtrl', ['$scope', '$http', function($scope, $h
     };
 }]);
 
+fourthInterviewApp.controller('questionViewCtrl', ['$scope', function($scope) {
+    $scope.questions = [
+        {question: 'Explain the difference between interface and abstract class', expectedAnswer: 'expectedAnswer1', level: "Junior"},
+        {question: 'What is the ready() function used for?', expectedAnswer: 'expectedAnswer2', level: 'Intermediate'},
+        {question: 'What is a static method?', expectedAnswer: 'expectedAnswer3', level: 'Advanced'}
+    ];
+}]);
+
 fourthInterviewApp.controller('sideMenuCtrl', ['$scope', function($scope) {
     $scope.activeSideMenuItem = 'Quick Interview';
 
